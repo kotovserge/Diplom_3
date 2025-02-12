@@ -14,6 +14,11 @@
 
     Раздел «Конструктор», переходы к разделам: «Булки», «Соусы», «Начинки».
 
+Тестирование выполнено в двух браузерах: Chrom, Yandex.
+Для Yandex нужно прописать путь к  браузеру в
+src/test/java/Browser в строке
+options.setBinary("C:/Users/serge/AppData/Local/Yandex/YandexBrowser/Application/browser.exe");
+
 При написании тестов использовалось:
 
     Java 11.0.24
