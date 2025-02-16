@@ -14,10 +14,17 @@
 
     Раздел «Конструктор», переходы к разделам: «Булки», «Соусы», «Начинки».
 
-Тестирование выполнено в двух браузерах: Chrom, Yandex.
-Для Yandex нужно прописать путь к  браузеру в
-src/test/java/Browser в строке
-options.setBinary("C:/Users/serge/AppData/Local/Yandex/YandexBrowser/Application/browser.exe");
+Тестирование выполнено в двух браузерах: Chrome, Yandex.
+
+При запуске тестов из IDEA используется браузер Chrom.
+
+При запуске из Terminal есть возможность указать используемый браузер:
+ - Для браузера Crome запускаем без параметров
+   mvn test
+ - Для Yandex нужно указать путь к браузеру
+   mvn clean test -DyandexDriverPath=<Путь к браузеру>
+   Пример:
+   mvn clean test -DyandexDriverPath=C:/Users/serge/AppData/Local/Yandex/YandexBrowser/Application/browser.exe
 
 При написании тестов использовалось:
 
