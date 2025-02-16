@@ -20,8 +20,10 @@
 
 При запуске из Terminal есть возможность указать используемый браузер:
  - Для браузера Crome запускаем без параметров
+   
    mvn test
  - Для Yandex нужно указать путь к браузеру
+   
    mvn clean test -DyandexDriverPath=<Путь к браузеру>
    Пример:
    mvn clean test -DyandexDriverPath=C:/Users/serge/AppData/Local/Yandex/YandexBrowser/Application/browser.exe
