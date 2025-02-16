@@ -40,6 +40,7 @@ public class DesignerTest {
             // Сохраним токен для последующего удаления пользователя
             accessToken = response.extract().path("accessToken");
         }
+
         driver = new Browser().getWebDriver();
         HomePage homePage = new HomePage(driver);
         driver.get(homePage.getURL());
