@@ -15,6 +15,7 @@
     Раздел «Конструктор», переходы к разделам: «Булки», «Соусы», «Начинки».
 
 Тестирование выполнено в двух браузерах: Chrom, Yandex.
+Выбор браузера для тестирования. 
 
 При тестировании в IDEA запускается Chrome браузер.
 
@@ -24,11 +25,11 @@
 
 Что бы запустить тест в Yandex необходимо в параметрах указать путь до браузера.
 
-  mvn clean test -DyandexDriverPath=<путь до драйвера>
+  mvn test -DyandexDriverPath=<путь до драйвера>
 
 Например:
 
-  mvn clean test -DyandexDriverPath=C:/Users/serge/AppData/Local/Yandex/YandexBrowser/Application/browser.exe
+  mvn test -DyandexDriverPath=C:/Users/serge/AppData/Local/Yandex/YandexBrowser/Application/browser.exe
 
 При написании тестов использовалось:
 
