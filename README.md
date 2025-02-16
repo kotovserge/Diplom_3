@@ -25,6 +25,7 @@
  - Для Yandex нужно указать путь к браузеру
    
    mvn clean test -DyandexDriverPath=<Путь к браузеру>
+
    Пример:
    mvn clean test -DyandexDriverPath=C:/Users/serge/AppData/Local/Yandex/YandexBrowser/Application/browser.exe
 
