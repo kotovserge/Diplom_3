@@ -1,29 +1,19 @@
 import api.user.UserApi;
-import api.user.UserLoginRequest;
 import api.user.UserRandom;
 import api.user.UserRegisterRequest;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import io.qameta.allure.Step;
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import pageobject.ForgotPasswordPage;
 import pageobject.HomePage;
 import pageobject.LoginPage;
-import pageobject.RegisterPage;
-
-import java.util.concurrent.TimeUnit;
 
 import static java.util.Objects.isNull;
 import static org.apache.commons.lang3.BooleanUtils.isTrue;
 
-@RunWith(Parameterized.class)
 public class DesignerTest {
     private WebDriver driver;
     private String browserName;
@@ -50,27 +40,13 @@ public class DesignerTest {
             // Сохраним токен для последующего удаления пользователя
             accessToken = response.extract().path("accessToken");
         }
-        driver = new Browser().getWebDriver(browserName);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver = new Browser().getWebDriver();
         HomePage homePage = new HomePage(driver);
         driver.get(homePage.getURL());
     }
 
-    public DesignerTest(String browserName) {
-        this.browserName = browserName;
-    }
-
-    @Parameterized.Parameters(name = " ({0})")
-    public static Object[][] testDate() {
-        return new Object[][]{
-                {"chrome"},
-                {"yandex"}
-        };
-    }
-
-    // Конструктор, проверка раздела Булки
-    @Step("Конструктор, переход к разделу Булки")
+    @DisplayName("Конструктор, проверка раздела Булки")
+    @Description("Проверяем раздел Булки")
     @Test
     public void designerRollsTest() {
         // Создать объект с домашней страницей
@@ -81,14 +57,16 @@ public class DesignerTest {
         LoginPage loginPage = new LoginPage(driver);
         // Заполнить форму данными и нажать Войти
         loginPage.logIn(userName, userPassword, userEmail);
+        // Нажать в конструкторе на Соусы
+        homePage.designerSauceLinkTextClick();
         // Нажать в конструкторе на Булки
         homePage.designerRollsLinkTextClick();
         // Проверить раздел Булки
         homePage.isDesignerRollsLinkText();
     }
 
-    // Конструктор, проверка раздела соусы
-    @Step("Конструктор, переход к разделу Суосы")
+    @DisplayName("Конструктор, проверка раздела Соусы")
+    @Description("Проверяем раздел Соусы")
     @Test
     public void designerSauceTest() {
         // Создать объект с домашней страницей
@@ -99,15 +77,14 @@ public class DesignerTest {
         LoginPage loginPage = new LoginPage(driver);
         // Заполнить форму данными и нажать Войти
         loginPage.logIn(userName, userPassword, userEmail);
-
         // Нажать в конструкторе на Соусы
         homePage.designerSauceLinkTextClick();
         // Проверить раздел Соусы
         homePage.isDesignerSauceLinkText();
     }
 
-    // Конструктор, проверка раздела Начинки
-    @Step("Конструктор, переход к разделу Начинки")
+    @DisplayName("Конструктор, проверка раздела Начинки")
+    @Description("Проверяем раздел Начинки")
     @Test
     public void designerFillinfTest() {
         // Создать объект с домашней страницей

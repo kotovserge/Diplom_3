@@ -1,5 +1,6 @@
 package pageobject;
 
+import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -24,22 +25,22 @@ public class AccountProfilePage extends BasePage {
     }
 
     // Методы
-    // Метод проверки открытия страницы входа
+    @Step("Проверка открытия страницы входа")
     public void isAccountProfilePageOpen() {
         Assert.assertEquals(textAccountProfilePageExpected, driver.findElement(By.xpath(textAccountProfilePage)).getText());
     }
 
-    // Нажать на кнопку Выход
+    @Step("Нажать на кнопку Выход")
     public void designerClick() {
         driver.findElement(By.xpath(designerLinkText)).click();
     }
 
-    // Нажать на логотип Stellar Burgers
+    @Step("Нажать на логотип Stellar Burgers")
     public void stellaBurgersClick() {
         driver.findElement(By.xpath(stellarBurgersLinkText)).click();
     }
 
-    // Нажать на кнопку Выход
+    @Step("Нажать на кнопку Выход")
     public void logInButtonClick() {
         driver.findElement(By.xpath(logOutAccountProfilePage)).click();
     }

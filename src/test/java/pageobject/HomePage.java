@@ -1,5 +1,6 @@
 package pageobject;
 
+import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -42,48 +43,47 @@ public class HomePage extends BasePage {
         return url;
     }
 
-    // Клик по кнопке Войти в аккаунт на странице
+    @Step("Нажать кнопку Войти в аккаунт на странице")
     public void accountButtonClick() {
         driver.findElement(By.xpath(accountButton)).click();
     }
 
-    // Клик по кнопке Личный Кабинет в header
+    @Step("Нажать кнопку Личный Кабинет в header")
     public void accountHeaderButtonClick() {
         driver.findElement(By.xpath(accountHeaderButon)).click();
     }
 
-    // Метод проверки наличия кнопки Оформить заказ
+    @Step("Проверить наличия кнопки Оформить заказ")
     public void isPlaceOrderButton() {
         Assert.assertEquals(textPlaceOrderButtonExpected, driver.findElement(By.xpath(placeOrderButton)).getText());
     }
 
-    // Нажать LinkText Булки
+    @Step("Нажать LinkText раздела Булки")
     public void designerRollsLinkTextClick() {
-        // По умолчанию открывается раздел Булки
-        // поэтому уходим из раздела Булки
-        designerFillingLinkTextClick();
-        // Возвращаемся в раздел Булки
         driver.findElement(By.xpath(designerRollsLinkText)).click();
     }
-    // Проверить раздел LinkText Булки
+
+    @Step("Проверить раздел Булки")
     public void isDesignerRollsLinkText() {
        Assert.assertEquals("Булки", driver.findElement(By.xpath(designerRollsLinkText)).getText());
     }
 
-    // Нажать LinkText Соусы
+    @Step("Нажать LinkText раздела Соусы")
     public void designerSauceLinkTextClick() {
         driver.findElement(By.xpath(designerSauceLinkText)).click();
     }
-    // Проверить раздел LinkText Соусы
+
+    @Step("Проверить раздел Соусы")
     public void isDesignerSauceLinkText() {
         Assert.assertEquals("Соусы", driver.findElement(By.xpath(designerSauceLinkText)).getText());
     }
 
-    // Нажать LinkText Начинки
+    @Step("Нажать LinkText Начинки")
     public void designerFillingLinkTextClick() {
         driver.findElement(By.xpath(designerFillingLinkText)).click();
     }
-    // Проверить раздел LinkText Filling
+
+    @Step("Проверить раздел Начинки")
     public void isDesignerFillingLinkText() {
         Assert.assertEquals("Начинки", driver.findElement(By.xpath(designerFillingLinkText)).getText());
     }

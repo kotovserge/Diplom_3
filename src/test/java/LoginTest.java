@@ -1,33 +1,24 @@
 import api.user.UserApi;
-import api.user.UserLoginRequest;
 import api.user.UserRandom;
 import api.user.UserRegisterRequest;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Description;
 import io.qameta.allure.Step;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import pageobject.ForgotPasswordPage;
 import pageobject.HomePage;
 import pageobject.LoginPage;
 import pageobject.RegisterPage;
 
-import java.util.concurrent.TimeUnit;
-
 import static java.util.Objects.isNull;
 import static org.apache.commons.lang3.BooleanUtils.isTrue;
 
-@RunWith(Parameterized.class)
 public class LoginTest {
     private WebDriver driver;
-    private String browserName;
-
     private UserApi userApi;
     private UserRegisterRequest userDataRegister;
     private ValidatableResponse response;
@@ -53,27 +44,13 @@ public class LoginTest {
             accessToken = response.extract().path("accessToken");
         }
 
-        driver = new Browser().getWebDriver(browserName);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver = new Browser().getWebDriver();
         HomePage homePage = new HomePage(driver);
         driver.get(homePage.getURL());
     }
 
-    public LoginTest(String browserName) {
-        this.browserName = browserName;
-    }
-
-    @Parameterized.Parameters(name = " ({0})")
-    public static Object[][] testDate() {
-        return new Object[][]{
-                {"chrome"},
-                {"yandex"}
-        };
-    }
-
-    // Вход в аккаунт по кнопке Войти в аккаунт на главной
-    @Step("Вход в аккаунт по кнопке Войти в аккаунт на главной")
+    @DisplayName("Вход в аккаунт по кнопке Войти в аккаунт на главной")
+    @Description("Проверяем Вход в аккаунт по кнопке Войти в аккаунт на главной")
     @Test
     public void loginHomePageTest() {
         // Создать объект с домашней страницей
@@ -86,8 +63,8 @@ public class LoginTest {
         loginPage.logIn( userName, userPassword, userEmail);
     }
 
-    // Вход в аккаунт через кнопку Личный кабинет
-    @Step("Вход в аккаунт через кнопку Личный кабинет")
+    @DisplayName("Вход в аккаунт через кнопку Личный кабинет")
+    @Description("Проверяем Вход в аккаунт через кнопку Личный кабинет")
     @Test
     public void loginHeaderHomePageTest() {
         // Создать объект с домашней страницей
@@ -99,8 +76,8 @@ public class LoginTest {
         loginPage.logIn( userName, userPassword, userEmail);
     }
 
-    // Вход в аккаунт через форму регистрации
-    @Step("Вход в аккаунт через форму регистрации")
+    @DisplayName("Вход в аккаунт через форму регистрации")
+    @Description("Проверяем Вход в аккаунт через форму регистрации")
     @Test
     public void loginRegisterPageTest() {
         // Создать объект с домашней страницей
@@ -122,9 +99,8 @@ public class LoginTest {
         loginPage.logIn( userName, userPassword, userEmail);
     }
 
-
-    // Вход в аккаунт через форму Восстановить пароль
-    @Step("Вход в аккаунт через кнопку в форме Восстановления пароля")
+    @DisplayName("Вход в аккаунт через форму Восстановить пароль")
+    @Description("Проверяем Вход в аккаунт через форму Восстановить пароль")
     @Test
     public void loginForgotPasswordPageTest() {
         // Создать объект с домашней страницей

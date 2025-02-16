@@ -17,36 +17,11 @@ public abstract class BaseHttpClient {
             .setBaseUri(Url.HOST)
             .addHeader("Content-Type", "application/json")
             .setRelaxedHTTPSValidation()
-            .addFilter(new RequestLoggingFilter())
-            .addFilter(new ResponseLoggingFilter())
-            .addFilter(new ErrorLoggingFilter())
             .build();
-
-    protected Response doGetRequest(String path) {
-        return (Response) given()
-                .spec(baseRequestSpec)
-                .get(path);
-    }
-
-    protected Response doGetRequest(String path, String token) {
-        return (Response) given()
-                .spec(baseRequestSpec)
-                .header("Authorization", token)
-                .get(path);
-    }
 
     protected ValidatableResponse doPostRequest(String path, Object body) {
         return (ValidatableResponse) given()
                 .spec(baseRequestSpec)
-                .body(body)
-                .post(path)
-                .then();
-    }
-
-    protected ValidatableResponse doPostRequest(String path, String token, Object body) {
-        return (ValidatableResponse) given()
-                .spec(baseRequestSpec)
-                .header("Authorization", token)
                 .body(body)
                 .post(path)
                 .then();

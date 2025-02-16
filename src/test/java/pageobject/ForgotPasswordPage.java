@@ -1,5 +1,6 @@
 package pageobject;
 
+import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,12 +20,12 @@ public class ForgotPasswordPage extends BasePage {
     }
 
     // Методы
-    // Метод проверки открытия страницы восстановление пароля
+    @Step("Проверка открытия страницы восстановление пароля")
     public void isForgotPasswordPageOpen() {
         Assert.assertEquals(textForgotPasswordExpected, driver.findElement(By.xpath(textForgotPasswordPage)).getText());
     }
 
-    // Нажать на кнопку Войти
+    @Step("Нажать на кнопку Войти")
     public void logInButton() {
         driver.findElement(By.xpath(logInButton)).click();
     }

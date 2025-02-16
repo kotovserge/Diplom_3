@@ -1,6 +1,7 @@
 package pageobject;
 
 import com.google.common.io.Resources;
+import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -30,36 +31,37 @@ public class LoginPage extends BasePage {
     }
 
     // Методы
-    // Метод проверки открытия страницы входа
+    @Step("Проверить открытие страницы входа")
     public void isLoginPageOpen() {
         Assert.assertEquals(textLoginPageExpected, driver.findElement(By.xpath(textLoginPage)).getText());
     }
 
-    // Нажать на текст Зарегистрироваться
+    @Step("Нажать на текст Зарегистрироваться")
     public void registerLinkTextClick() {
         driver.findElement(By.xpath(registerLinkText)).click();
     }
 
-    // Заполнить поля Email
+    @Step("Заполнить поле Email")
     public void fillEmail(String userEmail) {
         driver.findElement(By.xpath(emailField)).sendKeys(userEmail);
     }
 
-    // Заполнить поле Пароль
+    @Step("Заполнить поле Пароль")
     public void fillPassword(String userPassword) {
         driver.findElement(By.xpath(passwordField)).sendKeys(userPassword);
     }
 
-    // Нажать на кнопку Восстановить пароль
+    @Step("Нажать на кнопку Восстановить пароль")
     public void forgotPasswordButtonClick() {
         driver.findElement(By.xpath(forgotPasswordButton)).click();
     }
 
-    // Нажать на кнопку Восстановить пароль
+    @Step("Нажать на кнопку Восстановить пароль")
     public void logInButtonClick() {
         driver.findElement(By.xpath(logInButton)).click();
     }
 
+    @Step("Проверить упешный вход в аккаунт")
     public void logIn(String userName, String userPassword, String userEmail  ) {
         // Создать объект со страницей LoginPage
         LoginPage loginPage = new LoginPage(driver);
