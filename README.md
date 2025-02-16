@@ -18,13 +18,16 @@
 
 При тестировании в IDEA запускается Chrome браузер.
 
-При тестировании в терминале если запустить без параметров,
+При запуске теста в терминале без параметров используется по умолчанию Chrome.
+
   mvn test
-используется по умолчанию Chrome.
 
 Что бы запустить тест в Yandex необходимо в параметрах указать путь до браузера.
+
   mvn clean test -DyandexDriverPath=<путь до драйвера>
+
 Например:
+
   mvn clean test -DyandexDriverPath=C:/Users/serge/AppData/Local/Yandex/YandexBrowser/Application/browser.exe
 
 При написании тестов использовалось:
